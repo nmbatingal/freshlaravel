@@ -14,6 +14,8 @@ let mix = require('laravel-mix');
 mix.js('resources/assets/js/app.js', 'public/js').extract(['vue'])
    .sass('resources/assets/sass/app.scss', 'public/css');
 
+mix.copy('public/assets/jquery-backstretch/jquery.backstretch.min.js', 'public/js/jquery.backstretch.min.js');
+
 mix.browserSync('freshlaravel.dev');
 
 mix.disableNotifications();
