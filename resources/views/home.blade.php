@@ -1,23 +1,19 @@
 @extends('layouts.app')
 
-@section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
+@section('styles')
+@endsection('styles')
 
-                <div class="panel-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    You are logged in!
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+@section('page-title')
+    Dashboard
 @endsection
+
+@section('breadcrumb')
+    <li><a href="{{ url('/') }}"><i class="fa fa-home"></i> Home</a></li>
+@endsection
+
+@section('content')
+@endsection
+
+@section('scripts')
+<script src="{{ asset('assets/assets/js/jquery.nicescroll.js') }}" type="text/javascript"></script>
+@endsection('scripts')

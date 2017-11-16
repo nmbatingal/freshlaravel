@@ -27,7 +27,8 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    //protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -48,9 +49,12 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|string|max:255',
+            //'name' => 'required|string|max:255',
+            'firstname' => 'required|string',
+            'lastname' => 'required|string',
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
+            'password' => 'required|string|min:8|confirmed',
+            'password_confirmation'=>'sometimes|required_with:password',
         ]);
     }
 
@@ -58,14 +62,19 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \App\User
+     * @return \Laravel\User
      */
     protected function create(array $data)
     {
+        $username = strtolower($data['firstname'][0] . $data['middlename'][0] . $data['lastname']);
+
         return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
+            'lastname'      => $data['lastname'],
+            'firstname'     => $data['firstname'],
+            'middlename'    => $data['middlename'],
+            'username'      => $username,
+            'email'         => $data['email'],
+            'password'      => bcrypt($data['password']),
         ]);
     }
 }

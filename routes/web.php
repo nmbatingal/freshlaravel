@@ -14,31 +14,26 @@
 Route::get('/login', function () {
     return view('auth.login');
 });
-
 Route::get('/', 'HomeController@index')->name('home');
-
-Route::get('home', 'HomeController@index')->name('home');
-
 Auth::routes();
 
 /*** APPLICANTS CONTROLLER ***/
-Route::get('applicants/list', 'ApplicantsController@index')->middleware('auth')->name('applicants');
-
+Route::get('/applicants/list', 'ApplicantsController@index')->middleware('auth')->name('applicants');
 Route::get('applicants/list/add', [
   	'middleware' => ['auth'],
   	'uses' => function () {
    		return view('applicants.add'); 
 }]);
-
 Route::post('/add-applicant/create', 'ApplicantsController@create');
-
-Route::get('applicants/delete/{id}', 'ApplicantsController@destroy');
+Route::get('/applicants/delete/{id}', 'ApplicantsController@destroy');
 /*** END APPLICANTS CONTROLLER ***/
 
 /*** LINEUP APPLICANTS CONTROLLER ***/
-Route::get('lineup', 'SelectionsController@index')->middleware('auth')->name('lineup');
-
-Route::post('lineup/create', 'SelectionsController@createSelectionLine');
-
-Route::get('lineup/view/{id}', 'SelectionsController@view')->middleware('auth')->name('lineup.view');
+Route::get('/applicants/lineup', 'SelectionsController@index')->middleware('auth')->name('lineup');
+Route::post('/applicants/lineup/create', 'SelectionsController@createSelectionLine');
+Route::get('/applicants/lineup/view/{id}', 'SelectionsController@view')->middleware('auth')->name('lineup.view');
 /*** END APPLICANTS CONTROLLER ***/
+
+/*** POSITION CONTROLLER ***/
+Route::get('/positions', 'PositionsController@index')->middleware('auth')->name('positions');
+/*** END POSITION CONTROLLER ***/

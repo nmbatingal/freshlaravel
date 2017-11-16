@@ -1,0 +1,32 @@
+{
+  "name": "scrollTo",
+  "homepage": "https://github.com/ganlanyuan/scrollTo",
+  "authors": [
+    "William <ganlanyuan@gmail.com>"
+  ],
+  "description": "Scrolls to a particular vertical coordinates in the document.",
+  "main": "/dist/scrollTo.js",
+  "moduleType": [],
+  "keywords": [
+    "scrollTo"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "version": "1.0.0",
+  "_release": "1.0.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.0.0",
+    "commit": "b1d377dac477affd73fbb9be8846fc19f6c58d1a"
+  },
+  "_source": "https://github.com/ganlanyuan/scrollTo.git",
+  "_target": "^1.0.0",
+  "_originalSource": "scrollTo",
+  "_direct": true
+}

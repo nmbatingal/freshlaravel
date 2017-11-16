@@ -1,0 +1,2 @@
+var scrollTo=function(){return function(t,e){function o(t,e,n){if(!(n<0)){var i,c=e-t.scrollTop,r=c/n*10,l=function(){t.scrollTop+=r,t.scrollTop!==e&&(o(t,e,n-10),i=!1)};i||(i=!0,window.requestAnimationFrame?window.requestAnimationFrame(l):setTimeout(l,10))}}var n=document.body,i=document.documentElement,c=(i||n.parentNode||n).clientHeight,r=Math.max(n.scrollHeight,n.offsetHeight,i.clientHeight,i.scrollHeight,i.offsetHeight),l=t+c,u=r-c-1;l>r&&(t=u),t=Math.round(t),o(document.body,t,e),o(document.documentElement,t,e)}}();
+//# sourceMappingURL=../sourcemaps/scrollTo.js.map
