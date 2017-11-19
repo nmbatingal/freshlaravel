@@ -16,6 +16,6 @@ mix.js('resources/assets/js/app.js', 'public/js').extract(['vue'])
 
 mix.copy('public/assets/jquery-backstretch/jquery.backstretch.min.js', 'public/js/jquery.backstretch.min.js');
 
-mix.browserSync('freshlaravel.dev');
+//mix.browserSync('freshlaravel.dev');
 
 mix.disableNotifications();

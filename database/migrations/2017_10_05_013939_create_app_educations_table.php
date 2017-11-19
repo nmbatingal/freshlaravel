@@ -19,7 +19,7 @@ class CreateAppEducationsTable extends Migration
             $table->increments('id');
             $table->string('program', 150);
             $table->string('school', 250);
-            $table->char('year', 4);
+            $table->date('nullable');
             $table->integer('applicant_id')->unsigned();
             $table->foreign('applicant_id')->references('id')->on('applicants')->onDelete('cascade');
             $table->timestamps();

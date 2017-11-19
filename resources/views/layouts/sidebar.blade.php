@@ -17,7 +17,7 @@
             <li class="header">MENU</li>
             <li class="{{ Request::is( '/') ? 'active' : '' }}">
                 <a href="{{ url('/') }}">
-                    <i class="fa fa-home"></i> <span>Home</span>
+                    <i class="fa fa-home "></i> <span>Home</span>
                 </a>
             </li>
             <li class="treeview {{ Request::is( '/applicants') ? 'active' : '' }} {{ Request::is( 'applicants/*') ? 'active' : '' }}">
@@ -38,7 +38,7 @@
             </li>
             <li class="{{ Request::is( 'positions') ? 'active' : '' }} {{ Request::is( 'positions/*') ? 'active' : '' }}">
                 <a  href="{{ url('/positions') }}">
-                    <i class="fa fa-cog"></i> <span>Office Positions</span>
+                    <i class="fa fa-thumb-tack"></i> <span>Office Positions</span>
                 </a>
             </li>
         </ul>

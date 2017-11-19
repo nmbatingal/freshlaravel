@@ -46,7 +46,7 @@
                 <div class="box-body">
 
                     @if(session('info'))
-                        <div class="alert alert-success alert-dismissible">
+                        <div class="alert alert-success alert-dismissible hide-alert-panel">
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                             <h4><i class="icon fa fa-check"></i> {{ session('info') }}</h4>
                         </div>
@@ -145,7 +145,7 @@
                     <h4 class="modal-title" id="largeModalLabel">SELECTION LINE-UP</h4>
                 </div>
                 
-                <form id="create_lineup" method="POST" action="{{ url('lineup/create') }}" role="form">
+                <form id="create_lineup" method="POST" class="form" action="{{ url('lineup/create') }}" role="form">
                     {{ csrf_field() }}
                     <div class="modal-body">
                         <div class="row clearfix">
@@ -187,8 +187,8 @@
                     </div>
 
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-warning">SAVE</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">CLOSE</button>
+                        <button type="submit" class="btn btn-warning"><i class="fa fa-save fa-fw"></i> SAVE</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-cancel"></i> CLOSE</button>
                     </div>
                 </form>
             </div>

@@ -24,7 +24,7 @@ Route::get('applicants/list/add', [
   	'uses' => function () {
    		return view('applicants.add'); 
 }]);
-Route::post('/add-applicant/create', 'ApplicantsController@create');
+Route::post('/add-applicant/create', 'ApplicantsController@create')->name('applicant.create');
 Route::get('/applicants/delete/{id}', 'ApplicantsController@destroy');
 /*** END APPLICANTS CONTROLLER ***/
 
@@ -36,4 +36,5 @@ Route::get('/applicants/lineup/view/{id}', 'SelectionsController@view')->middlew
 
 /*** POSITION CONTROLLER ***/
 Route::get('/positions', 'PositionsController@index')->middleware('auth')->name('positions');
+Route::post('/positions/create', 'PositionsController@create')->name('positions.create');
 /*** END POSITION CONTROLLER ***/

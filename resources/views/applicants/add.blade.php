@@ -1,53 +1,100 @@
 @extends('layouts.app')
 
+<!-- TITLE -->
+@section('title')
+    Add Applicants - 
+@endsection
+
+<!-- CASCADING STYLE SHEET -->
+@section('styles')
+    <link href="{{ asset('assets/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/selectize/dist/css/selectize.css') }}" rel="stylesheet">
+@endsection('styles')
+
+<!-- PAGE TITLE -->
+@section('page-title')
+    <i class="fa fa-users"></i> Applicants
+@endsection
+
+<!-- CAMEL PAGE TITLE -->
+@section('camel-title')
+    Add Applicants
+@endsection
+
+<!-- BREADCRUMB -->
+@section('breadcrumb')
+    <li><a href="{{ url('/') }}"><i class="fa fa-home"></i> Home</a></li>
+    <li><a href="#">Applicants</a></li>
+    <li><a href="{{ url('/applicants/list') }}">List</a></li>
+    <li class="active">Add Applicant</li>
+@endsection
+
 @section('content')
 <section class="content">
-    <div class="container-fluid">
-        <div class="block-header">
-            <h2><a href="{{ url('applicants')}}">APPLICANTS</a> | <b>ADD APPLICANT</b></h2>
-        </div>
-        
-        <!-- Advanced Form Example With Validation -->
-        <form id="add_applicant_form" method="POST" action="{{ url('/add-applicant/create') }}" role="form" enctype="multipart/form-data">
-            <div class="row clearfix">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="card">
-                        <div class="header">
-                            <h2>
-                                <b>APPLICANT INFORMATION</b>
-                                <small>asterisk (*) fields required</small>
-                            </h2>
+    
+    <br>
+
+    <form id="add_applicant_form" class="form form-horizontal" method="POST" action="{{ url('/add-applicant/create') }}" role="form" enctype="multipart/form-data">
+        {{ csrf_field() }}
+        <div class="row">
+            <div class="col-xs-12 col-md-12">
+                <div class="box">
+                    <div class="box-header with-border bg-gray">
+                        <h3 class="box-title"><i class="fa fa-user fa-fw"></i> <b>Applicant Details</b></h3>
+                    </div>
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="applicant" class="col-sm-1 col-sm-offset-1 control-label">Full Name</label>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" name="lastname" placeholder="Last" autofocus required>
+                                <span class="help-block"><em>This field is required</em></span>
+                            </div>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" name="firstname" placeholder="First" required>
+                                <span class="help-block"><em>This field is required</em></span>
+                            </div>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" name="middlename" placeholder="MI">
+                            </div>
                         </div>
-                        <div class="body">
-                            {{ csrf_field() }}
-                            <div class="row clearfix">
-                                <div class="col-md-4 col-sm-12">
-                                    <b>Lastname*</b>
-                                    <div class="form-group form-float">
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">person</i>
-                                            </span>
-                                            <div class="form-line masked-input">
-                                                <input type="text" class="form-control" name="lastname" required>
-                                            </div>
-                                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12 col-md-12">
+                <div class="box">
+                    <div class="box-header with-border bg-gray">
+                        <h3 class="box-title"><i class="fa fa-mortar-board fa-fw"></i> <b>Education</b></h3>
+                    </div>
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-sm-4 col-sm-offset-1">
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <label>Program</label>
+                                        <input type="text" class="form-control" name="education[program][]" required>
                                     </div>
                                 </div>
-                                <div class="col-md-4 col-sm-12">
-                                    <b>Firstname*</b>
-                                    <div class="form-group form-float">
-                                        <div class="form-line">
-                                            <input type="text" class="form-control" name="firstname" required>
-                                        </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <label>School</label>
+                                        <input type="text" class="form-control" name="education[school][]" required>
                                     </div>
                                 </div>
-                                <div class="col-md-4 col-sm-12">
-                                    <b>Middlename</b>
-                                    <div class="form-group form-float">
-                                        <div class="form-line">
-                                            <input type="text" class="form-control" name="middlename">
-                                        </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label>Year</label>
+
+                                    <div class="input-group">
+                                      <div class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                      </div>
+                                      <input type="text" class="form-control datemask" data-inputmask="'alias': 'YYYY-MM-DD'" data-mask="">
                                     </div>
                                 </div>
                             </div>
@@ -55,6 +102,60 @@
                     </div>
                 </div>
             </div>
+        </div>
+
+        <button class="btn btn-success" type="submit">SUBMIT</button>
+    </form>
+
+    <div class="row">
+        <div class="container">
+          <h2>Bootstrap Mixed Form <p class="lead">with horizontal and inline fields</p></h2>
+          <form role="form" class="form-horizontal">
+            <div class="form-group">
+              <label class="col-sm-1" for="inputEmail1">Email</label>
+              <div class="col-sm-5"><input type="email" class="form-control" id="inputEmail1" placeholder="Email"></div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-1" for="inputPassword1">Password</label>
+              <div class="col-sm-5"><input type="password" class="form-control" id="inputPassword1" placeholder="Password"></div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-12" for="TextArea">Textarea</label>
+              <div class="col-sm-6"><textarea class="form-control" id="TextArea"></textarea></div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-3"><label>First name</label><input type="text" class="form-control" placeholder="First"></div>
+              <div class="col-sm-3"><label>Last name</label><input type="text" class="form-control" placeholder="Last"></div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-12">Phone number</label>
+              <div class="col-sm-1"><input type="text" class="form-control" placeholder="000"><div class="help">area</div></div>
+              <div class="col-sm-1"><input type="text" class="form-control" placeholder="000"><div class="help">local</div></div>
+              <div class="col-sm-2"><input type="text" class="form-control" placeholder="1111"><div class="help">number</div></div>
+              <div class="col-sm-2"><input type="text" class="form-control" placeholder="123"><div class="help">ext</div></div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-1">Options</label>
+              <div class="col-sm-2"><input type="text" class="form-control" placeholder="Option 1"></div>
+              <div class="col-sm-3"><input type="text" class="form-control" placeholder="Option 2"></div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-6">
+                <button type="submit" class="btn btn-info pull-right">Submit</button>
+              </div>
+            </div>
+          </form>
+          <hr>
+        </div>
+    </div>
+</section>
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <h2><a href="{{ url('applicants')}}">APPLICANTS</a> | <b>ADD APPLICANT</b></h2>
+        </div>
+        
 
             <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -392,3 +493,11 @@
     </div>
 </section>
 @endsection
+
+<!-- JAVASCRIPTS -->
+@section('scripts')
+    <script src="{{ asset('assets/input-mask/jquery.inputmask.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/input-mask/jquery.inputmask.date.extensions.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/input-mask/jquery.inputmask.extensions.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/jquery-applicant.js') }}" type="text/javascript"></script>
+@endsection('scripts')

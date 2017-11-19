@@ -10,14 +10,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/font-awesome/css/font-awesome.css') }}" rel="stylesheet">
-    <!-- Custom styles for this template -->
-    <!-- <link href="{{ asset('css/style-responsive.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet"> -->
-    <!-- Theme style -->
-    <!-- <link rel="stylesheet" href="{{ asset('css/AdminLTE.min.css') }}"> -->
     <link rel="stylesheet" href="{{ asset('css/AdminLTE.css') }}">
-    <!-- AdminLTE Skins. Choose a skin from the css/skins
-        folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="{{ asset('css/skins/_all-skins.min.css') }}">
     @yield('styles')
     <!-- Google Font -->
@@ -63,6 +56,7 @@
 
     <script src="{{ asset('assets/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
     <script src="{{ asset('assets/assets/js/jquery.nicescroll.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/jquery-validation/dist/jquery.validate.min.js') }}" type="text/javascript"></script>
 
     @yield('scripts')
 

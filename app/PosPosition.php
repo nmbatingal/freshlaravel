@@ -9,8 +9,18 @@ class PosPosition extends Model
     protected $table = 'pos_positions';
 
     /*** RELATIONS ***/
-    public function applicantSelections()
+    public function publications()
     {
-        return $this->hasMany('App\ApplicantSelection', 'position_id');
+        return $this->hasMany('App\PosPosition', 'pos_id');
+    }
+
+    public function items()
+    {
+        return $this->hasMany('App\PosItem', 'pos_id');
+    }
+
+    public function qualifications()
+    {
+        return $this->hasMany('App\PosQualification', 'pos_id');
     }
 }
