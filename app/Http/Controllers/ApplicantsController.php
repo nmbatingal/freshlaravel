@@ -26,6 +26,8 @@ class ApplicantsController extends Controller
         $applicant->lastname   = $request['lastname'];
         $applicant->firstname  = $request['firstname'];
         $applicant->middlename = $request['middlename'] ?: NULL;
+        $applicant->contact    = $request['contact-number'];
+        $applicant->remarks    = $request['remarks'];
         $applicant->save();
 
         $educations = $request->education;
