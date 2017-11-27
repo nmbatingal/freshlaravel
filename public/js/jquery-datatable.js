@@ -53,21 +53,28 @@ $(function () {
                                 '<td>'+ i[1] +'</td>' +
                                 '<td>'+ i[2] +'</td>' +
                                 '<td>'+ i[5] +'</td>' +
-                                '<td class="align-right">' +
-                                    '<a href="javascript:void(0);" class="btn btn-remove-app btn-danger btn-xs"><i class="material-icons md-18">close</i></a>' +
+                                '<td class="text-center">' +
+                                    '<a href="" class="btn btn-remove-app btn-danger btn-sm"><i class="fa fa-remove"></i></a>' +
                                 '</td>' +
                             '</tr>';
                 $("#table-lineup tbody").append(markup);
             });
 
             $('#largeModal').modal('show');
+        } else {
+            swal({
+                title   : 'Warning',
+                text    : 'Please select atleast one applicant!',
+                type    :  'warning',
+                allowOutsideClick: false,
+            });
         }
 
         //console.log(ids);
     } );
 
     /* DELETE BUTTON */
-    $('.btn-app-delete').click(function(event, jqXHR, settings) {
+    $('.btn-app-delete').click( function( event, jqXHR, settings ) {
         event.preventDefault();
         var button = $(this);
         var row    = button.closest('tr');
@@ -107,12 +114,19 @@ $(function () {
         });
     });
 
-    /*** DATATABLE LINEUP OF APPLICANTS ***/
-    var table = $('#table-lineup').DataTable({
-        responsive: true,
-        mark: {
-            element: 'span',
-            className: 'bg-blue'
-        },
+    /*** REMOVE ITEM ***/
+    $('.btn-remove-app').click( function( event, jqXHR, settings ) {
+        // event.preventDefault();
+        // console.log("THIS");
     });
+
+    /***  ***/
+
+    /*** DATATABLE LINEUP OF APPLICANTS ***/
+    /*var table = $('#table-lineup').DataTable({
+        paging      : false,
+        ordering    : false,
+        info        : false,
+        select      : false
+    });*/
 });

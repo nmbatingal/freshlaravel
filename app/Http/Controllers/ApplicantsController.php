@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 use App\Applicant as Applicant;
 use App\AppEducation as Education;
@@ -10,6 +11,7 @@ use App\AppTraining as Training;
 use App\AppExperience as Experience;
 use App\AppEligibility as Eligibility;
 use App\AppFileAttachment as FileAttach;
+use App\PosPosition as Position;
 
 class ApplicantsController extends Controller
 {
@@ -66,8 +68,6 @@ class ApplicantsController extends Controller
                     $experience->position     = $position;
                     $experience->agency       = $experiences['agency'][$i];
                     $experience->salary       = $experiences['salary'][$i] ?: NULL;
-                    $experience->appointment  = $experiences['appointment'][$i] ?: NULL;
-                    // $experience->is_govt     = $experiences['is_govt'][$i] ?: NULL;
                     $experience->from_date    = $experiences['from_date'][$i] ?: NULL;
                     $experience->to_date      = $experiences['to_date'][$i] ?: NULL;
                     $experience->applicant()->associate($applicant);
@@ -92,9 +92,8 @@ class ApplicantsController extends Controller
         }
 
         foreach ($request->attachment as $file) {
-            $filename           = $file->getClientOriginalName();
-            $destinationPath    = 'upload/attachment/'.'applicant_'.$applicant['id'];       
-
+            $filename                = $file->getClientOriginalName();
+            $destinationPath         = 'upload/attachment/'.'applicant_'.$applicant['id'];       
             $file_att                = new FileAttach();
             $file_att->filename      = $filename;
             $file_att->path          = $destinationPath;
@@ -121,5 +120,23 @@ class ApplicantsController extends Controller
 
         // return redirect('/applicants')->with('info', 'Applicant Removed Successfully!');
         return response()->json($data);
+    }
+
+    public function positions() {
+        $positions = Position::orderBy( 'title', 'ASC' )->get();
+        //$data      = array();
+        $data      = '<option></option>';
+
+        foreach ( $positions as $i => $value ) {
+            /*$data[] = [
+                'id'   => $i,
+                'name' => $value['title'],
+            ];*/
+
+            $data .= '<option value="'. $value['id'] .'">' . $value['title'] . '</option>';
+        }
+
+        return response()->json($data);
+        //return $positions;
     }
 }

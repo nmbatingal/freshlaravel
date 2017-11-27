@@ -8,7 +8,7 @@
 <!-- CASCADING STYLE SHEET -->
 @section('styles')
     <link href="{{ asset('assets/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/selectize/dist/css/selectize.css') }}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/selectize/dist/css/selectize.default.css') }}">
 @endsection('styles')
 
 <!-- PAGE TITLE -->
@@ -145,42 +145,52 @@
                     <h4 class="modal-title" id="largeModalLabel">SELECTION LINE-UP</h4>
                 </div>
                 
-                <form id="create_lineup" method="POST" class="form" action="{{ url('lineup/create') }}" role="form">
+                <form id="create_lineup" method="POST" class="form form-horizontal" action="{{ url('lineup/create') }}" role="form">
                     {{ csrf_field() }}
                     <div class="modal-body">
-                        <div class="row clearfix">
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <div class="body">
-                                    <div class="row clearfix">
-                                        <div class="col-md-4 col-sm-12">
-                                            <div class="form-group form-float">
-                                                <div class="form-line">
-                                                    <input type="text" class="form-control" name="position_title" required>
-                                                    <label class="form-label">Position Title*</label>
-                                                </div>
-                                            </div>
-                                        </div>
+                        
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label for="title" class="col-sm-3 control-label">Position Title</label>
+                                    <div class="col-sm-8">
+                                        <select id="select-position" name="position_title" placeholder="Select a title..." required></select>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="row clearfix">
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <div class="table-responsive">
-                                    <table id="table-lineup" class="table table-bordered table-striped table-condensed table-hover">
-                                        <thead>
-                                            <tr>
-                                                <th>Name</th>
-                                                <th>Education</th>
-                                                <th>Eligibility</th>
-                                                <th class="no-sort action"></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <!-- selection -->
-                                        </tbody>
-                                    </table>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label for="title" class="col-sm-3 control-label">Notes</label>
+                                    <div class="col-sm-8">
+                                        <textarea class="form-control" name="notes" rows="3"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="box box-solid">
+                                    <div class="box-body no-wrap">
+                                        <div class="table-responsive">
+                                            <table id="table-lineup" class="table table-bordered table-striped table-condensed table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Name</th>
+                                                        <th>Education</th>
+                                                        <th>Eligibility</th>
+                                                        <th class="no-sort action"></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <!-- selection -->
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -206,5 +216,41 @@
     <script src="{{ asset('js/jquery-datatable.js') }}"></script>
     <script src="{{ asset('assets/selectize/dist/js/standalone/selectize.js') }}" type="text/javascript"></script>
     <script>
+
+        /*$('#select-position').selectize({
+            options     : [], 
+            create      : false,
+            load        : function( query, callback ) {
+                if (!query.length) return callback();
+                $.ajax({
+                    url: url,
+                    //url: 'http://127.0.0.1:8080/getnames.php',
+                    type: 'GET',
+                    dataType: 'json',
+                    data: {
+                        title: query,
+                    },
+                    error: function() {
+                        callback();
+                    },
+                    success: function(res) {
+                        callback(res);
+                    }
+                });
+            }
+        });*/
+
+        $.get('{{ url("/applicants/list/positions") }}', function(data) {
+            
+            //$('#select-position').append(data);
+            $('#select-position').append(data).selectize({
+                create: false,
+                sortField: 'text'
+            });
+
+        });
+
+        
+
     </script>
 @endsection('scripts')

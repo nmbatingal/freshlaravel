@@ -20,8 +20,6 @@ class CreateAppExperiencesTable extends Migration
             $table->string('position', 100)->nullable();
             $table->string('agency', 200)->nullable();
             $table->double('salary', 12, 2)->nullable();
-            $table->string('appointment', 100)->nullable();
-            $table->boolean('is_govt');
             $table->date('from_date')->nullable();
             $table->date('to_date')->nullable();
             $table->integer('applicant_id')->unsigned();

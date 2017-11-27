@@ -8,7 +8,7 @@
 <!-- CASCADING STYLE SHEET -->
 @section('styles')
     <link href="{{ asset('assets/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/selectize/dist/css/selectize.css') }}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/selectize/dist/css/selectize.default.css') }}">
 @endsection('styles')
 
 <!-- PAGE TITLE -->
@@ -82,18 +82,6 @@
                                 </div>
                             </div>
                         </div>
-
-                        <div class="row">
-                            <div class="col-sm-5">
-                                <div class="form-group masked-input">
-                                    <label for="title" class="col-sm-4 control-label">File Attachments</label>
-                                    <div class="col-sm-8">
-                                        <input type="file" class="form-control" name="attachment[]" multiple required>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
                     </div>
                 </div>
             </div>
@@ -329,7 +317,7 @@
                                             <div class="input-group-addon">
                                                 <i class="fa fa-calendar"></i>
                                             </div>
-                                            <input type="text" class="form-control date" name="eligibility[license_no][]" data-inputmask="'alias': 'YYYY-MM-DD'" data-mask="" placeholder="yyyy-mm-dd">
+                                            <input type="text" class="form-control date" name="eligibility[exam_date][]" data-inputmask="'alias': 'YYYY-MM-DD'" data-mask="" placeholder="yyyy-mm-dd">
                                         </div>
                                         <em>From</em>
                                     </div>
@@ -349,8 +337,19 @@
                         <h3 class="box-title"><i class="fa fa-mortar-board fa-fw"></i> <b>Education</b></h3>
                     </div>
                     <div class="box-body">
+
                         <div class="row">
-                            <div class="col-sm-8">
+                            <div class="col-xs-12 col-sm-12 col-md-6">
+                                <div class="form-group masked-input">
+                                    <label for="title" class="col-sm-4 control-label">File Attachments</label>
+                                    <div class="col-sm-8">
+                                        <input type="file" class="form-control" name="attachment[]" multiple required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-8">
                                 <div class="form-group">
                                     <label for="applicant" class="col-sm-2 col-sm-offset-1 control-label">Remarks</label>
                                     <div class="col-sm-8">
@@ -374,4 +373,5 @@
 @section('scripts')
     <script src="{{ asset('assets/jquery-inputmask/jquery.inputmask.bundle.js') }}"></script>
     <script src="{{ asset('js/jquery-applicant.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/selectize/dist/js/standalone/selectize.js') }}" type="text/javascript"></script>
 @endsection('scripts')

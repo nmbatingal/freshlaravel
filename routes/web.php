@@ -26,6 +26,7 @@ Route::get('applicants/list/add', [
 }]);
 Route::post('/add-applicant/create', 'ApplicantsController@create')->name('applicant.create');
 Route::get('/applicants/delete/{id}', 'ApplicantsController@destroy');
+Route::get('/applicants/list/positions', 'ApplicantsController@positions');
 /*** END APPLICANTS CONTROLLER ***/
 
 /*** LINEUP APPLICANTS CONTROLLER ***/
