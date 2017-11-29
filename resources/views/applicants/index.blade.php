@@ -13,12 +13,7 @@
 
 <!-- PAGE TITLE -->
 @section('page-title')
-    <i class="fa fa-users"></i> Applicants
-@endsection
-
-<!-- CAMEL PAGE TITLE -->
-@section('camel-title')
-    List of Applicants
+    <i class="fa fa-users"></i> List of Applicants
 @endsection
 
 <!-- BREADCRUMB -->
@@ -117,6 +112,7 @@
                                                     {{ date("M-d-Y", strtotime($applicant['created_at'])) }}
                                                 </td>
                                                 <td class="text-center">
+                                                    <a href='{{ url("/applicants/update/{$applicant->id}") }}' class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="top" title="" data-original-title="View"><i class="fa fa-eye"></i></a>
                                                     <a href='{{ url("/applicants/delete/{$applicant->id}") }}' class="btn-app-delete btn btn-danger btn-xs" data-method="delete" data-token="{{csrf_token()}}"  data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-trash"></i></a>
                                                 </td>
                                             </tr>
@@ -145,7 +141,7 @@
                     <h4 class="modal-title" id="largeModalLabel">SELECTION LINE-UP</h4>
                 </div>
                 
-                <form id="create_lineup" method="POST" class="form form-horizontal" action="{{ url('lineup/create') }}" role="form">
+                <form id="create_lineup" method="POST" class="form-horizontal" action="{{ url('applicants/lineup/create') }}" role="form">
                     {{ csrf_field() }}
                     <div class="modal-body">
                         
@@ -155,6 +151,22 @@
                                     <label for="title" class="col-sm-3 control-label">Position Title</label>
                                     <div class="col-sm-8">
                                         <select id="select-position" name="position_title" placeholder="Select a title..." required></select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group masked-input">
+                                    <label for="title" class="col-sm-3 control-label">Interview Date</label>
+                                    <div class="col-sm-8">
+                                        <div class="input-group">
+                                            <div class="input-group-addon">
+                                                <i class="fa fa-calendar"></i>
+                                            </div>
+                                            <input type="text" name="date_interview" class="form-control date" data-inputmask="'alias': 'YYYY-MM-DD'" data-mask="" placeholder="yyyy-mm-dd" required>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -214,6 +226,8 @@
     <script src="{{ asset('assets/mark.js/dist/jquery.mark.js') }}"></script>
     <script src="{{ asset('assets/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js') }}"></script>
     <script src="{{ asset('js/jquery-datatable.js') }}"></script>
+    <script src="{{ asset('assets/jquery-inputmask/jquery.inputmask.bundle.js') }}"></script>
+    <script src="{{ asset('js/jquery-applicant.js') }}" type="text/javascript"></script>
     <script src="{{ asset('assets/selectize/dist/js/standalone/selectize.js') }}" type="text/javascript"></script>
     <script>
 
@@ -249,8 +263,5 @@
             });
 
         });
-
-        
-
     </script>
 @endsection('scripts')

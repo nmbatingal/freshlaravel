@@ -11,7 +11,7 @@ class PosPosition extends Model
     /*** RELATIONS ***/
     public function publications()
     {
-        return $this->hasMany('App\PosPosition', 'pos_id');
+        return $this->hasMany('App\PosPublication', 'pos_id');
     }
 
     public function items()
@@ -22,5 +22,10 @@ class PosPosition extends Model
     public function qualifications()
     {
         return $this->hasMany('App\PosQualification', 'pos_id');
+    }
+
+    public function applicantSelections()
+    {
+        return $this->hasMany('App\ApplicantSelection', 'position_id');
     }
 }

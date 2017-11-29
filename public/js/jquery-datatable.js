@@ -19,10 +19,6 @@ $(function () {
             render: function (data, type, full, meta){
                 return '<input type="checkbox" name="id[]" value="' + $('<div/>').text(data).html() + '">';
             }
-        },
-        {
-            targets: 'no-sort',
-            orderable: false,
         }],
         order: [[1, 'asc']],
         select: {

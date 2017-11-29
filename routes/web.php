@@ -32,6 +32,7 @@ Route::get('/applicants/list/positions', 'ApplicantsController@positions');
 /*** LINEUP APPLICANTS CONTROLLER ***/
 Route::get('/applicants/lineup', 'SelectionsController@index')->middleware('auth')->name('lineup');
 Route::post('/applicants/lineup/create', 'SelectionsController@createSelectionLine');
+Route::get('/applicants/lineup/delete/{id}', 'SelectionsController@destroy');
 Route::get('/applicants/lineup/view/{id}', 'SelectionsController@view')->middleware('auth')->name('lineup.view');
 /*** END APPLICANTS CONTROLLER ***/
 

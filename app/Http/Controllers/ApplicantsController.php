@@ -123,20 +123,13 @@ class ApplicantsController extends Controller
     }
 
     public function positions() {
-        $positions = Position::orderBy( 'title', 'ASC' )->get();
-        //$data      = array();
+        $positions = Position::all();
         $data      = '<option></option>';
 
         foreach ( $positions as $i => $value ) {
-            /*$data[] = [
-                'id'   => $i,
-                'name' => $value['title'],
-            ];*/
-
             $data .= '<option value="'. $value['id'] .'">' . $value['title'] . '</option>';
         }
 
         return response()->json($data);
-        //return $positions;
     }
 }

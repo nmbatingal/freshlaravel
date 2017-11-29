@@ -196,8 +196,6 @@
 @endsection
 
 @section('scripts')
-
-    <script src="{{ asset('assets/assets/js/jquery.nicescroll.js') }}" type="text/javascript"></script>
     <script src="{{ asset('assets/selectize/dist/js/standalone/selectize.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/jquery-position.js') }}" type="text/javascript"></script>
 

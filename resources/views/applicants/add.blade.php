@@ -13,7 +13,7 @@
 
 <!-- PAGE TITLE -->
 @section('page-title')
-    <i class="fa fa-users"></i> Applicants
+    <i class="fa fa-users"></i> List of Applicants
 @endsection
 
 <!-- CAMEL PAGE TITLE -->

@@ -1,107 +1,141 @@
 @extends('layouts.app')
 
+<!-- TITLE -->
+@section('title')
+    Selection Lineup - 
+@endsection
+
+<!-- CASCADING STYLE SHEET -->
+@section('styles')
+    <link href="{{ asset('assets/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css') }}" rel="stylesheet">
+@endsection('styles')
+
+<!-- PAGE TITLE -->
+@section('page-title')
+    <i class="fa fa-tasks"></i> Lineup of Applicants
+@endsection
+
+<!-- CAMEL PAGE TITLE -->
+@section('camel-title')
+    Selection Lineup
+@endsection
+
+<!-- BREADCRUMB -->
+@section('breadcrumb')
+    <li><a href="{{ url('/') }}"><i class="fa fa-home"></i> Home</a></li>
+    <li><a href="#">Applicants</a></li>
+    <li><a href="{{ url('/applicants/lineup') }}">Lineup</a></li>
+    <li class="active">Selection Lineup</li>
+@endsection
+
 @section('content')
 <section class="content">
-    <div class="container-fluid">
-        <div class="block-header">
-            <h2><a href="{{ url('lineup')}}">LINE-UP</a> | <b>SELECTION LINE-UP</b></h2>
-        </div>
-        @if(session('info'))
-            <div class="alert bg-green alert-dismissible" role="alert">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
-                {{ session('info') }}
-            </div>
-        @endif
 
-        <!-- Basic Examples -->
-        <div class="row clearfix">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="card">
-                    <div class="header">
-                        <h2>
-                            JOB APPLICATION
-                            <small>asterisk (*) fields required</small>
-                        </h2>
+    <div class="row">
+        <div class="col-xs-12 col-md-4">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title"><b></b></h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" id="btn-print" class="btn btn-danger btn-sm" data-toggle="modal"><i class="fa fa-print fa-fw"></i> Print</button>
+                        <button type="button" id="" class="btn btn-primary btn-sm" data-toggle="modal"><i class="fa fa-pencil fa-fw"></i> Update</button>
                     </div>
+                </div>
+                <div class="box-body">
+                    <form class="form-horizontal">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="form-group">
+                                    <label for="title" class="col-sm-3 control-label">Position Title</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" readonly value="{{ $selection->position['title'] }}">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-                    <div class="body">
-                        <form id="update_lineup" method="POST" action="{{ url('lineup/update') }}" role="form">
-                            {{ csrf_field() }}
-                            <div class="row clearfix">
-                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                                    <div class="form-group form-float">
-                                        <div class="form-line">
-                                            <input type="text" class="form-control">
-                                            <label class="form-label">Position Title*</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
-                                    <div class="form-group form-float">
-                                        <div class="form-line">
-                                            <input type="text" class="form-control">
-                                            <label class="form-label">Acronym</label>
-                                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="form-group">
+                                    <label for="title" class="col-sm-3 control-label">Salary Grade</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" readonly value="{{ $selection->position['sal_grade'] }}">
                                     </div>
                                 </div>
                             </div>
-                            <h2 class="card-inside-title">Qualification Standards</h2>
-                            <div class="row clearfix">
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <div class="form-group form-float">
-                                        <div class="form-line">
-                                            <label class="form-label">Education</label>
-                                            <textarea rows="1" class="form-control no-resize auto-growth" style="overflow: hidden; word-wrap: break-word; height: 32px;"></textarea>
-                                        </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="form-group">
+                                    <label for="title" class="col-sm-3 control-label">Publication No</label>
+                                    <div class="col-sm-9">
+                                        <?php
+                                            $publication = explode(',', $selection->position->publications[0]['publication_no']);
+
+                                            foreach ($publication as $value) {
+                                                echo '<span class="label bg-primary">'.$value.'</span>&nbsp;';
+                                            }
+                                        ?>
                                     </div>
                                 </div>
                             </div>
-                            <div class="row clearfix">
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <div class="form-group form-float">
-                                        <div class="form-line">
-                                            <label class="form-label">Experience</label>
-                                            <textarea rows="1" class="form-control no-resize auto-growth" style="overflow: hidden; word-wrap: break-word; height: 32px;"></textarea>
-                                        </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="form-group">
+                                    <label for="title" class="col-sm-3 control-label">Item No</label>
+                                    <div class="col-sm-9">
+                                        <?php
+                                            $item = explode(',', $selection->position->items[0]['item_no']);
+
+                                            foreach ($item as $value) {
+                                                echo '<span class="label bg-primary">'.$value.'</span>&nbsp;';
+                                            }
+                                        ?>
                                     </div>
                                 </div>
                             </div>
-                            <div class="row clearfix">
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <div class="form-group form-float">
-                                        <div class="form-line">
-                                            <label class="form-label">Trainings</label>
-                                            <textarea rows="1" class="form-control no-resize auto-growth" style="overflow: hidden; word-wrap: break-word; height: 32px;"></textarea>
-                                        </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <label>Qualification Standards</label>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="form-group">
+                                    <label for="title" class="col-sm-3 control-label">Item No</label>
+                                    <div class="col-sm-9">
+                                        <textarea class="form-control" rows="3">
+                                            {{ $selection->position->qualifications[0]['education'] }}
+                                        </textarea>
                                     </div>
                                 </div>
                             </div>
-                            <div class="row clearfix">
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <div class="form-group form-float">
-                                        <div class="form-line">
-                                            <label class="form-label">Eligibilities</label>
-                                            <textarea rows="1" class="form-control no-resize auto-growth" style="overflow: hidden; word-wrap: break-word; height: 32px;"></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+                        </div>
+
+                    </form>
                 </div>
             </div>
         </div>
-        <div class="row clearfix">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="card">
-                    <div class="header">
-                        <h2>
-                            SELECTED APPLICANTS
-                        </h2>
-                    </div>
-                    <div class="body">
-                        <div class="table-responsive">
-                            <table id="table-lineup-selection" class="table table-bordered table-striped table-condensed table-hover dataTable">
+        <div class="col-xs-12 col-md-8">
+            <div class="box box-primary">
+                <div class="box-body">
+
+                    @if(session('info'))
+                         <div class="alert alert-success alert-dismissible hide-alert-panel">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                            {{ session('info') }}
+                        </div>
+                    @endif
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table id="table-lineup-selection" class="table table-bordered table-striped table-responsive table-hover dataTable">
                                 <thead>
                                     <tr>
                                         <th>Name</th>
@@ -114,7 +148,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($selections as $selection)
+                                    @foreach($group as $selection)
                                         <tr>
                                             <td>
                                                 <a href='{{ url("/applicants/update/{$selection->applicant->id}") }}' class="font-underline">{{ $selection->applicant['lastname'] . ', ' . $selection->applicant['firstname'] }} {{ !empty($selection->applicant['middlename']) ? $selection->applicant['middlename'][0].'.' : '' }}</a>
@@ -143,10 +177,10 @@
                                                     {{ $eligibility['title'] }};<br>
                                                 @endforeach
                                             </td>
-                                            <td class="align-left">
+                                            <td class="text-left">
                                             </td>
-                                            <td class="align-center">
-                                                <a href="javascript:void(0);" class="btn btn-remove-app btn-danger btn-xs"><i class="material-icons md-18">close</i></a>
+                                            <td class="text-center">
+                                                <a href="javascript:void(0);" class="btn btn-remove-app btn-danger btn-xs"><i class="fa fa-trash"></i></a>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -157,7 +191,15 @@
                 </div>
             </div>
         </div>
-        <!-- #END# Basic Examples -->
     </div>
+
 </section>
 @endsection
+
+@section('scripts')
+    <script src="{{ asset('assets/datatables.net/js/jquery.dataTables.js') }}"></script>
+    <script src="{{ asset('assets/datatables.mark.js/dist/datatables.mark.min.js') }}"></script>
+    <script src="{{ asset('assets/mark.js/dist/jquery.mark.js') }}"></script>
+    <script src="{{ asset('assets/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js') }}"></script>
+    <script src="{{ asset('js/jquery-lineup.js') }}" type="text/javascript"></script>
+@endsection('scripts')

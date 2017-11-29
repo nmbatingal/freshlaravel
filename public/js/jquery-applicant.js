@@ -25,6 +25,51 @@ $(function () {
                 error.insertAfter( element );
             }
 
+            if ( !element.next( "span" )[ 0 ] ) {
+                $( "<span class='fa fa-remove form-control-feedback'></span>" ).insertAfter( element );
+            }
+            
+        },
+        success: function ( label, element ) {
+
+            if ( !$( element ).next( "span" )[ 0 ] ) {
+                $( "<span class='fa fa-check form-control-feedback'></span>" ).insertAfter( $( element ) );
+            }
+
+        },
+        highlight: function ( element, errorClass, validClass ) {
+            $( element ).parents( ".form-group" ).addClass( "has-error" ).removeClass( "has-success" );
+            $( element ).next( "span" ).addClass( "fa-remove" ).removeClass( "fa-check" );
+
+        },
+        unhighlight: function ( element, errorClass, validClass ) {
+            $( element ).parents( ".form-group" ).addClass( "has-success" ).removeClass( "has-error" );
+            $( element ).next( "span" ).addClass( "fa-check" ).removeClass( "fa-remove" );
+
+        }
+    } );
+
+    $( '#create_lineup' ).validate( {
+        rules: {
+            'position_title'    : "required",
+            'date_interview'    : "required",
+        },
+        messages: {
+            'position_title'    : "Please select a title",
+        },
+        errorElement: "em",
+        errorPlacement: function ( error, element ) {
+
+            error.addClass( "help-block" );
+            element.parents( '.form-group' ).addClass('has-error').addClass( 'has-feedback' );
+            error.insertAfter( element );
+
+            /*** GROUP INPUT LAYOUT ***/
+            if ( element.parent( '.input-group' ) ) {
+                error.insertAfter( element.parent( '.input-group' ) );
+            } else {
+                error.insertAfter( element );
+            }
 
             if ( !element.next( "span" )[ 0 ] ) {
                 $( "<span class='fa fa-remove form-control-feedback'></span>" ).insertAfter( element );
