@@ -37,7 +37,7 @@
                 <div class="box-header with-border">
                     <h3 class="box-title"><b></b></h3>
                     <div class="box-tools pull-right">
-                        <button type="button" id="btn-print" class="btn btn-danger btn-sm" data-toggle="modal"><i class="fa fa-print fa-fw"></i> Print</button>
+                        <button type="button" id="btn-print-list" class="btn btn-danger btn-sm" data-toggle="modal" value='{{ url("applicants/lineup/print/{$selection->id}") }}'><i class="fa fa-print fa-fw"></i> Print</button>
                         <button type="button" id="" class="btn btn-primary btn-sm" data-toggle="modal"><i class="fa fa-pencil fa-fw"></i> Update</button>
                     </div>
                 </div>
@@ -69,7 +69,7 @@
                             <div class="col-xs-12">
                                 <div class="form-group">
                                     <label for="title" class="col-sm-3 control-label">Publication No</label>
-                                    <div class="col-sm-9">
+                                    <div class="col-sm-9" style="overflow-wrap:break-word;">
                                         <?php
                                             $publication = explode(',', $selection->position->publications[0]['publication_no']);
 
@@ -86,7 +86,7 @@
                             <div class="col-xs-12">
                                 <div class="form-group">
                                     <label for="title" class="col-sm-3 control-label">Item No</label>
-                                    <div class="col-sm-9">
+                                    <div class="col-sm-9" style="overflow-wrap:break-word;">
                                         <?php
                                             $item = explode(',', $selection->position->items[0]['item_no']);
 
@@ -238,11 +238,9 @@
     <script src="{{ asset('assets/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js') }}"></script>
     <script src="{{ asset('js/jquery-lineup.js') }}" type="text/javascript"></script>
     <script>
-        $(document).on('click','#btn-print-pr',function(event, jqXHR, settings) {
-            event.preventDefault();
-            var $href  = $(this).attr('href');
-            var target = window.open( $href, 'Print','directories=no,titlebar=no,toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=800,height=800');
-
+        $('#btn-print-list').click(function () {
+            var $href  = $(this).attr('value');
+            var target = window.open( $href, 'Print','directories=no,titlebar=no,toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=1366,height=800');
             target.print();
         });
     </script>

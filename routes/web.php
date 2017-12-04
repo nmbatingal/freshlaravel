@@ -34,9 +34,7 @@ Route::get('/applicants/lineup', 'SelectionsController@index')->middleware('auth
 Route::post('/applicants/lineup/create', 'SelectionsController@createSelectionLine');
 Route::get('/applicants/lineup/delete/{id}', 'SelectionsController@destroy');
 Route::get('/applicants/lineup/view/{id}', 'SelectionsController@view')->middleware('auth')->name('lineup.view');
-Route::get('/applicants/lineup/print/{id}', function () {
-    return view('lineup.print');
-});
+Route::get('/applicants/lineup/print/{id}', 'SelectionsController@print')->middleware('auth')->name('lineup.print');
 /*** END APPLICANTS CONTROLLER ***/
 
 /*** POSITION CONTROLLER ***/

@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>@yield('title') HR Management Information System</title>
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <title>&nbsp;&nbsp;&nbsp;</title>
+    <!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/font-awesome/css/font-awesome.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('css/AdminLTE.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/AdminLTE.css') }}"> -->
     @yield('styles')
     <!-- Google Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">

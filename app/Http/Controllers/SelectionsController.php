@@ -42,6 +42,13 @@ class SelectionsController extends Controller
         return view('lineup.view', compact('selection', 'group'));
     }
 
+    public function print($id) {
+        $selection = Selection::find($id);
+        $group     = Group::where('group_id', $id)->get();
+
+        return view('lineup.print', compact('selection', 'group'));
+    }
+
     public function destroy($id) {
         $data      = false;
         $selection = Selection::find($id);

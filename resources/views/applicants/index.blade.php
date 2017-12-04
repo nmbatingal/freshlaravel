@@ -231,32 +231,8 @@
     <script src="{{ asset('assets/selectize/dist/js/standalone/selectize.js') }}" type="text/javascript"></script>
     <script>
 
-        /*$('#select-position').selectize({
-            options     : [], 
-            create      : false,
-            load        : function( query, callback ) {
-                if (!query.length) return callback();
-                $.ajax({
-                    url: url,
-                    //url: 'http://127.0.0.1:8080/getnames.php',
-                    type: 'GET',
-                    dataType: 'json',
-                    data: {
-                        title: query,
-                    },
-                    error: function() {
-                        callback();
-                    },
-                    success: function(res) {
-                        callback(res);
-                    }
-                });
-            }
-        });*/
-
         $.get('{{ url("/applicants/list/positions") }}', function(data) {
             
-            //$('#select-position').append(data);
             $('#select-position').append(data).selectize({
                 create: false,
                 sortField: 'text'
