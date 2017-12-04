@@ -12,7 +12,7 @@
 
 <!-- PAGE TITLE -->
 @section('page-title')
-    <i class="fa fa-tasks"></i> Lineup of Applicants
+    Lineup of Applicants
 @endsection
 
 <!-- BREADCRUMB -->
@@ -28,7 +28,7 @@
         <div class="col-xs-12 col-md-12">
             <div class="box box-primary">
                 <div class="box-header with-border">
-                    <h3 class="box-title"><b>Lineup of Applicants</b></h3>
+                    <h3 class="box-title"><i class="fa fa-tasks fa-fw"></i> <b>Lineup of Applicants</b></h3>
                 </div>
                 <div class="box-body">
 

@@ -13,7 +13,7 @@
 
 <!-- PAGE TITLE -->
 @section('page-title')
-    <i class="fa fa-users"></i> List of Applicants
+    List of Applicants
 @endsection
 
 <!-- BREADCRUMB -->
@@ -31,7 +31,7 @@
             <div class="box box-primary">
 
                 <div class="box-header with-border">
-                    <h3 class="box-title"><b>List of Applicants</b></h3>
+                    <h3 class="box-title"><i class="fa fa-users fa-fw"></i> <b>List of Applicants</b></h3>
                     <div class="box-tools pull-right">
                         <a href="{{ url('/applicants/list/add')}}" class="btn btn-success btn-sm"><i class="fa fa-user-plus"></i> Add Applicant</a>
                         <button type="button" id="submitlist" class="btn btn-warning btn-sm" data-toggle="modal"><i class="fa fa-list-ul"></i> Create Line-up</button>

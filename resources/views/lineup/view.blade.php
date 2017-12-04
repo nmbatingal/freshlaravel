@@ -108,11 +108,42 @@
                         <div class="row">
                             <div class="col-xs-12">
                                 <div class="form-group">
-                                    <label for="title" class="col-sm-3 control-label">Item No</label>
+                                    <label for="title" class="col-sm-3 control-label">Education</label>
                                     <div class="col-sm-9">
-                                        <textarea class="form-control" rows="3">
-                                            {{ $selection->position->qualifications[0]['education'] }}
-                                        </textarea>
+                                        <textarea class="form-control" rows="3" readonly>{{ $selection->position->qualifications[0]['education'] }}</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="form-group">
+                                    <label for="title" class="col-sm-3 control-label">Experience</label>
+                                    <div class="col-sm-9">
+                                        <textarea class="form-control" rows="3" readonly>{{ $selection->position->qualifications[0]['experience'] }}</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="form-group">
+                                    <label for="title" class="col-sm-3 control-label">Experience</label>
+                                    <div class="col-sm-9">
+                                        <textarea class="form-control" rows="3" readonly>{{ $selection->position->qualifications[0]['trainings'] }}</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="form-group">
+                                    <label for="title" class="col-sm-3 control-label">Eligibilities</label>
+                                    <div class="col-sm-9">
+                                        <textarea class="form-control" rows="3" readonly>{{ $selection->position->qualifications[0]['eligibilities'] }}</textarea>
                                     </div>
                                 </div>
                             </div>
@@ -122,8 +153,12 @@
                 </div>
             </div>
         </div>
+
         <div class="col-xs-12 col-md-8">
             <div class="box box-primary">
+                <div class="box-header">
+                    <h3 class="box-title"><b>Selection Lineup of Applicants</b></h3>
+                </div>
                 <div class="box-body">
 
                     @if(session('info'))
@@ -202,4 +237,13 @@
     <script src="{{ asset('assets/mark.js/dist/jquery.mark.js') }}"></script>
     <script src="{{ asset('assets/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js') }}"></script>
     <script src="{{ asset('js/jquery-lineup.js') }}" type="text/javascript"></script>
+    <script>
+        $(document).on('click','#btn-print-pr',function(event, jqXHR, settings) {
+            event.preventDefault();
+            var $href  = $(this).attr('href');
+            var target = window.open( $href, 'Print','directories=no,titlebar=no,toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=800,height=800');
+
+            target.print();
+        });
+    </script>
 @endsection('scripts')

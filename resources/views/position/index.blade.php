@@ -17,7 +17,7 @@
 
 <!-- PAGE TITLE -->
 @section('page-title')
-    <i class="fa fa-cog"></i> Positions
+    Positions
 @endsection
 
 <!-- CAMEL PAGE TITLE -->
@@ -38,7 +38,7 @@
         <div class="col-md-4 col-xs-12">
             <div class="box box-solid">
                 <div class="box-header with-border bg-orange">
-                    <h3 class="box-title"><b>Position Offered</b></h3>
+                    <h3 class="box-title"><i class="fa fa-thumb-tack"></i> <b>Position Offered</b></h3>
                 </div>
                 <div class="box-body">
                 </div>
