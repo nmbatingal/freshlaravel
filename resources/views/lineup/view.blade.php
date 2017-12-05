@@ -186,7 +186,7 @@
                                     @foreach($group as $selection)
                                         <tr>
                                             <td>
-                                                <a href='{{ url("/applicants/update/{$selection->applicant->id}") }}' class="font-underline">{{ $selection->applicant['lastname'] . ', ' . $selection->applicant['firstname'] }} {{ !empty($selection->applicant['middlename']) ? $selection->applicant['middlename'][0].'.' : '' }}</a>
+                                                <a href='{{ url("/applicants/edit/{$selection->applicant->id}") }}' class="font-underline">{{ $selection->applicant['lastname'] . ', ' . $selection->applicant['firstname'] }} {{ !empty($selection->applicant['middlename']) ? $selection->applicant['middlename'][0].'.' : '' }}</a>
                                                 <input type="hidden" name="applicant_id[]" value="{{ $selection->applicant['id'] }}">
                                             </td>
                                             <td>

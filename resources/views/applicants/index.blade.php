@@ -70,7 +70,7 @@
                                             <tr>
                                                 <td></td>
                                                 <td>
-                                                    <a href='{{ url("/applicants/update/{$applicant->id}") }}' class="font-underline">{{ $applicant['lastname'] . ', ' . $applicant['firstname'] }} {{ !empty($applicant['middlename']) ? $applicant['middlename'][0].'.' : '' }}</a>
+                                                    <a href='{{ url("/applicants/edit/{$applicant->id}") }}' class="font-underline">{{ $applicant['lastname'] . ', ' . $applicant['firstname'] }} {{ !empty($applicant['middlename']) ? $applicant['middlename'][0].'.' : '' }}</a>
                                                     <input type="hidden" name="applicant_id[]" value="{{ $applicant['id'] }}">
                                                 </td>
                                                 <td>

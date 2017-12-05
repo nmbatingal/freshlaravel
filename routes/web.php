@@ -18,15 +18,13 @@ Route::get('/', 'HomeController@index')->name('home');
 Auth::routes();
 
 /*** APPLICANTS CONTROLLER ***/
-Route::get('/applicants/list', 'ApplicantsController@index')->middleware('auth')->name('applicants');
-Route::get('applicants/list/add', [
-  	'middleware' => ['auth'],
-  	'uses' => function () {
-   		return view('applicants.add'); 
-}]);
-Route::post('/add-applicant/create', 'ApplicantsController@create')->name('applicant.create');
+Route::get('/applicants/list', 'ApplicantsController@index')->middleware('auth')->name('applicants');			// index page for applicants
+Route::get('/applicants/list/add', 'ApplicantsController@create')->middleware('auth')->name('applicant.add');	// route for adding new applicant
+Route::post('/applicants/store', 'ApplicantsController@store')->name('applicant.store');						// store new applicant
+Route::get('/applicants/edit/{id}', 'ApplicantsController@edit')->middleware('auth')->name('applicants.edit');
 Route::get('/applicants/delete/{id}', 'ApplicantsController@destroy');
 Route::get('/applicants/list/positions', 'ApplicantsController@positions');
+Route::get('/applicants/forms', 'ApplicantsController@forms')->middleware('auth')->name('applicant.forms');
 /*** END APPLICANTS CONTROLLER ***/
 
 /*** LINEUP APPLICANTS CONTROLLER ***/
@@ -35,7 +33,7 @@ Route::post('/applicants/lineup/create', 'SelectionsController@createSelectionLi
 Route::get('/applicants/lineup/delete/{id}', 'SelectionsController@destroy');
 Route::get('/applicants/lineup/view/{id}', 'SelectionsController@view')->middleware('auth')->name('lineup.view');
 Route::get('/applicants/lineup/print/{id}', 'SelectionsController@print')->middleware('auth')->name('lineup.print');
-/*** END APPLICANTS CONTROLLER ***/
+/*** END LINEUP APPLICANTS CONTROLLER ***/
 
 /*** POSITION CONTROLLER ***/
 Route::get('/positions', 'PositionsController@index')->middleware('auth')->name('positions');

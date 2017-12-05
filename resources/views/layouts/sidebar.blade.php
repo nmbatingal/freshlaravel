@@ -28,11 +28,14 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li class="{{ Request::is( 'applicants/list') ? 'active' : '' }} {{ Request::is( 'applicants/list/*') ? 'active' : '' }}">
+                    <li class="{{ Request::is( 'applicants/list') ? 'active' : '' }} {{ Request::is( 'applicants/list/*') ? 'active' : '' }} {{ Request::is( 'applicants/update/*') ? 'active' : '' }}">
                         <a href="{{ url('/applicants/list') }}"><i class="fa fa-circle-o"></i> List of Applicants</a>
                     </li>
                     <li class="{{ Request::is( 'applicants/lineup') ? 'active' : '' }} {{ Request::is( 'applicants/lineup/*') ? 'active' : '' }}">
                         <a href="{{ url('/applicants/lineup') }}"><i class="fa fa-circle-o"></i> Lineup of Applicants</a>
+                    </li>
+                    <li class="{{ Request::is( 'applicants/forms') ? 'active' : '' }} {{ Request::is( 'applicants/forms/*') ? 'active' : '' }}">
+                        <a href="{{ url('/applicants/forms') }}"><i class="fa fa-circle-o"></i> Forms</a>
                     </li>
                 </ul>
             </li>

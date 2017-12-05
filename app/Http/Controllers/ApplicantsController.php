@@ -15,13 +15,32 @@ use App\PosPosition as Position;
 
 class ApplicantsController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return Response
+     */
     public function index() {
 
         $applicants = Applicant::all();
         return view('applicants.index', compact('applicants'));
     }
 
-    public function create(Request $request) {
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return Response
+     */
+    public function create() {
+        return view('applicants.add');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @return Response
+     */
+    public function store(Request $request) {
 
         $applicant = new Applicant();
 
@@ -109,6 +128,35 @@ class ApplicantsController extends Controller
         return redirect('/applicants/list')->with('info', 'Applicant Information Saved Successfully!');
     }
 
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function edit($id) {
+
+        $applicant = Applicant::find($id);
+        return view('applicants.edit', compact('applicant'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function update($id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return Response
+     */
     public function destroy($id) {
 
         $data = false;
@@ -123,6 +171,17 @@ class ApplicantsController extends Controller
     }
 
     public function positions() {
+        $positions = Position::all();
+        $data      = '<option></option>';
+
+        foreach ( $positions as $i => $value ) {
+            $data .= '<option value="'. $value['id'] .'">' . $value['title'] . '</option>';
+        }
+
+        return response()->json($data);
+    }
+
+    public function forms() {
         $positions = Position::all();
         $data      = '<option></option>';
 

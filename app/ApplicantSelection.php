@@ -11,7 +11,7 @@ class ApplicantSelection extends Model
     /*** RELATIONS ***/
     public function position()
     {
-        return $this->belongsTo('App\PosPosition', 'pos_id', 'id');
+        return $this->belongsTo('App\PosPosition', 'position_id', 'id');
     }
 
     public function applicantSelections()

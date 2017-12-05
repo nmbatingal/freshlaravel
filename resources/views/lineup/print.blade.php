@@ -172,12 +172,12 @@
                             </td>
                             <td align="left" valign="top" class="border" style="padding: 5px;">
                                 @foreach($selection->applicant->educations as $educations)
-                                    {{ $educations['program'] }} - {{ $educations['school'] }}, {{ date("d-M-y", strtotime($educations['year'])) }}
+                                    {{ $educations['program'] }} - {{ $educations['school'] }}, {{ date("M-d-y", strtotime($educations['year'])) }}
                                 @endforeach
                             </td>
                             <td align="left" valign="top" class="border" style="padding: 5px;">
                                 @foreach($selection->applicant->trainings as $training)
-                                    {{ $training['title'] }} - {{ $training['conducted_by'] }}, {{ date("d-M-y", strtotime($training['from_date'])) }}
+                                    {{ $training['title'] }} - {{ $training['conducted_by'] }}, {{ date("M-d-y", strtotime($training['from_date'])) }}
                                 @endforeach
                             </td>
                             <td align="left" valign="top" class="border" style="padding: 5px;">
