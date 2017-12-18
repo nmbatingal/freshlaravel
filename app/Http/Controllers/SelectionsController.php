@@ -49,6 +49,13 @@ class SelectionsController extends Controller
         return view('lineup.print', compact('selection', 'group'));
     }
 
+    public function printCriteria($id) {
+        $selection = Selection::find($id);
+        $group     = Group::where('group_id', $id)->get();
+
+        return view('lineup.print-eval-criteria', compact('selection', 'group'));
+    }
+
     public function destroy($id) {
         $data      = false;
         $selection = Selection::find($id);

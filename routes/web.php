@@ -33,6 +33,8 @@ Route::post('/applicants/lineup/create', 'SelectionsController@createSelectionLi
 Route::get('/applicants/lineup/delete/{id}', 'SelectionsController@destroy');
 Route::get('/applicants/lineup/view/{id}', 'SelectionsController@view')->middleware('auth')->name('lineup.view');
 Route::get('/applicants/lineup/print/{id}', 'SelectionsController@print')->middleware('auth')->name('lineup.print');
+//Route::get('/applicants/lineup/print/evaluation-criteria/{id}', 'SelectionsController@printEvalCriteria')->middleware('auth')->name('lineup.print-eval-criteria-form');
+Route::get('/applicants/lineup/print/evaluation-criteria/{id}', 'SelectionsController@printCriteria')->middleware('auth')->name('lineup.print-eval-criteria-form');
 /*** END LINEUP APPLICANTS CONTROLLER ***/
 
 /*** POSITION CONTROLLER ***/

@@ -33,14 +33,12 @@
         width: 100%;
         border-collapse: collapse;
         padding: 5px;
+        table-layout: fixed;
+        word-wrap:break-word;
     }
     
     .lineup-table {
-        border-top: 0 !important;
-        border-right: 0 !important;
-        border-left:  0 !important;
-        border-bottom: 0 !important;
-        border-collapse: collapse;
+        border: 0 !important;
     }
     
     .lineup-list th {
@@ -51,6 +49,9 @@
     .lineup-list td.border {
         border-left: 1px solid #000;
         border-right: 1px solid #000;
+    }
+    
+    .lineup-list td {
     }
 
     @page {
@@ -81,145 +82,200 @@
     
     <div class="page">
         <table class="table lineup-table">
-            <tbody>
-                <tr>
-                    <td colspan="7" class="text-center">SELECTION LINE-UP OF APPLICANTS</td>
-                </tr>
+            <colgroup>
+                <col width="10%" />
+                <col width="10%" />
+                <col width="80%" />
+            </colgroup>
+            <tr>
+                <td colspan="3" class="text-center">SELECTION LINE-UP OF APPLICANTS</td>
+            </tr>
+            <tr>
+                <td>Position Title</td>
+                <td colspan="2">: {{ $selection->position['title'] }}</td>
+            </tr>
+            <tr>
+                <td>Publication No.</td>
+                <td colspan="2">: 
+                    <?php
+                        $publication = explode(',', $selection->position->publications[0]['publication_no']);
 
-                <tr>
-                    <td colspan="2">Position Title</td>
-                    <td colspan="5">: {{ $selection->position['title'] }}</td>
-                </tr>
+                        foreach ($publication as $value) {
+                            echo $value.'; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+                        }
+                    ?>                    
+                </td>
+            </tr>
+            <tr>
+                <td>Item No.</td>
+                <td colspan="2">: 
+                    <?php
+                        $item = explode(',', $selection->position->items[0]['item_no']);
 
-                <tr>
-                    <td colspan="2">Publication No.</td>
-                    <td colspan="5">: 
-                        <?php
-                            $publication = explode(',', $selection->position->publications[0]['publication_no']);
+                        foreach ($item as $value) {
+                            echo $value.'; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+                        }
+                    ?>                
+                </td>
+            </tr>
 
-                            foreach ($publication as $value) {
-                                echo $value.'; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
-                            }
-                        ?>                    
-                    </td>
-                </tr>
+            <tr>
+                <td>Salaray Grade</td>
+                <td colspan="2">: {{ $selection->position['sal_grade'] }}</td>
+            </tr>
 
-                <tr>
-                    <td colspan="2">Item No.</td>
-                    <td colspan="5">: 
-                        <?php
-                            $item = explode(',', $selection->position->items[0]['item_no']);
+            <tr>
+                <td rowspan="4" style="vertical-align:text-top">Qualification Standards</td>
+                <td>: Education</td>
+                <td> - {{ $selection->position->qualifications[0]['education'] }}</td>
+            </tr>
 
-                            foreach ($item as $value) {
-                                echo $value.'; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
-                            }
-                        ?>                
-                    </td>
-                </tr>
+            <tr>
+                <td>&nbsp;&nbsp;Experience</td>
+                <td> - {{ $selection->position->qualifications[0]['experience'] }}</td>
+            </tr>
 
-                <tr>
-                    <td colspan="2">Salaray Grade</td>
-                    <td colspan="5">: {{ $selection->position['sal_grade'] }}</td>
-                </tr>
+            <tr>
+                <td>&nbsp;&nbsp;Trainings</td>
+                <td> - {{ $selection->position->qualifications[0]['trainings'] }}</td>
+            </tr>
 
-                <tr>
-                    <td colspan="2" rowspan="4" style="vertical-align:text-top">Qualification Standards</td>
-                    <td width="7%">: Education</td>
-                    <td width="78%" colspan="4"> - {{ $selection->position->qualifications[0]['education'] }}</td>
-                </tr>
-
-                <tr>
-                    <td width="7%">&nbsp;&nbsp;Experience</td>
-                    <td width="78%" colspan="4"> - {{ $selection->position->qualifications[0]['experience'] }}</td>
-                </tr>
-
-                <tr>
-                    <td width="7%">&nbsp;&nbsp;Trainings</td>
-                    <td width="78%" colspan="4"> - {{ $selection->position->qualifications[0]['trainings'] }}</td>
-                </tr>
-
-                <tr>
-                    <td width="7%">&nbsp;&nbsp;Eligibilities</td>
-                    <td width="78%" colspan="4"> - {{ $selection->position->qualifications[0]['eligibilities'] }}</td>
-                </tr>
-            </tbody>
-        </table>
+            <tr>
+                <td>&nbsp;&nbsp;Eligibilities</td>
+                <td> - {{ $selection->position->qualifications[0]['eligibilities'] }}</td>
+            </tr>
+        </table>  
         
-        <br><br>
+        <br>
+        <br>
         
         <table class="table lineup-list">
             <thead>
                 <tr>
-                    <th style="padding: 5px;" width="2%" valign="top" class="lineup-list" scope="col">&nbsp;</th>
-                    <th style="padding: 5px;" width="20%" scope="col">Name</th>
+                    <th style="padding: 5px;" width="3%" valign="top" class="lineup-list" scope="col">&nbsp;</th>
+                    <th style="padding: 5px;" width="18%" scope="col">Name</th>
                     <th style="padding: 5px;" width="18%" scope="col">Education</th>
-                    <th style="padding: 5px;" width="19%" scope="col">Relevant trainings</th>
-                    <th style="padding: 5px;" width="19%" scope="col">Work Experience</th>
-                    <th style="padding: 5px;" width="17%" scope="col">Eligibility</th>
-                    <th style="padding: 5px;" width="5%" scope="col">Performance Rating</th>
+                    <th style="padding: 5px;" width="18%" scope="col">Relevant trainings</th>
+                    <th style="padding: 5px;" width="18%" scope="col">Work Experience</th>
+                    <th style="padding: 5px;" width="18%" scope="col">Eligibility</th>
+                    <th style="padding: 5px;" width="8%" scope="col">Performance Rating</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
 
-
-                    $applicants = count($group);
+                    $applicant = count($group);
                     foreach ($group as $i => $selection) {
+                        $itemlines = 0;
+                        $temp      = 0;
+
                 ?>      <tr>
                             <td valign="top" class="lineup-list border" style="text-align: center; padding: 5px;"> {{ $i + 1 }} </td>
                             <td align="left" valign="top" class="border" style="padding: 5px;">
-                                {{ $selection->applicant['lastname'] . ', ' . $selection->applicant['firstname'] }} {{ !empty($selection->applicant['middlename']) ? $selection->applicant['middlename'][0].'.' : '' }}
+                                <?php
+                                    $name = $selection->applicant['lastname'] . ', ' . $selection->applicant['firstname'].'&nbsp;'; 
+                                    $name .= !empty($selection->applicant['middlename']) ? $selection->applicant['middlename'][0].'.' : '';
+                                    echo $name;
+
+                                    $itemlines  = intval(strlen($name) / 30);
+                                    $temp       = $itemlines;
+
+                                ?>
                             </td>
                             <td align="left" valign="top" class="border" style="padding: 5px;">
-                                @foreach($selection->applicant->educations as $educations)
-                                    {{ $educations['program'] }} - {{ $educations['school'] }}, {{ date("M-d-y", strtotime($educations['year'])) }}
-                                @endforeach
+                                <?php
+                                    $education = '';
+                                    foreach ( $selection->applicant->educations as $educations ) {
+                                        $education  = $educations['program'] .' - '. $educations['school'] .', '. date("M-d-y", strtotime($educations['year'])) .'<br />';
+                                        echo $education;
+                                    }
+
+                                    $itemlines = intval(strlen($education) / 30);
+                                    if ( $itemlines > $temp ) {
+                                        $temp = $itemlines;
+                                    }
+                                ?>
                             </td>
                             <td align="left" valign="top" class="border" style="padding: 5px;">
-                                @foreach($selection->applicant->trainings as $training)
-                                    {{ $training['title'] }} - {{ $training['conducted_by'] }}, {{ date("M-d-y", strtotime($training['from_date'])) }}
-                                @endforeach
+                                <?php
+                                    $training = '';
+                                    foreach ( $selection->applicant->trainings as $trainings ) {
+                                        $training  = $trainings['title'] .' - '.  $trainings['conducted_by'] .', '. date("M-d-y", strtotime($trainings['from_date'])) . '<br />';
+                                        echo $training;
+                                    }
+
+                                    $itemlines = intval(strlen($training) / 30);
+                                    if ( $itemlines > $temp ) {
+                                        $temp = $itemlines;
+                                    }
+                                ?>
                             </td>
                             <td align="left" valign="top" class="border" style="padding: 5px;">
-                                @foreach($selection->applicant->experiences as $experience)
-                                    {{ $experience['position'] }}, {{ $experience['agency'] }} - {{ date("Y", strtotime($experience['to_date'])) }}</small><br>
-                                @endforeach
+                                <?php
+                                    $experience = '';
+                                    foreach ( $selection->applicant->experiences as $experiences ) {
+                                        $experience  = $experiences['position'] . ', '. $experiences['agency'] . ' - ' . date("Y", strtotime($experiences['to_date'])) . '<br />';
+                                        echo $experience;
+                                    }
+
+                                    $itemlines = intval(strlen($experience) / 30);
+                                    if ( $itemlines > $temp ) {
+                                        $temp = $itemlines;
+                                    }
+                                ?>
                             </td>
                             <td align="left" valign="top" class="border" style="padding: 5px;">
-                                @foreach($selection->applicant->eligibilities as $eligibility)
-                                    {{ $eligibility['title'] }};
-                                @endforeach
+                                <?php
+                                    $eligibility = '';
+                                    foreach ( $selection->applicant->eligibilities as $eligibilities ) {
+                                        $eligibility  = $eligibilities['title'] . '; ';
+                                        echo $eligibility;
+                                    }
+
+                                    $itemlines = intval(strlen($eligibility) / 30);
+                                    if ( $itemlines > $temp ) {
+                                        $temp = $itemlines;
+                                    }
+                                ?>
                             </td>
                             <td align="left" valign="top" class="border" style="padding: 5px;">
                             </td>
                         </tr>
                 <?php
+                        $applicant += $temp;
                     }
 
-                    $blanktd = 24;
-                    if($applicants > 24){
-                        $full_page_count = intval($applicants / 42);
-                        if($full_page_count > 0){
-                            $rem = intval($pr_count % 42);
+                    $blanktd = 25;
+                    if( $applicant > 25 ){
+                        $full_page_count = intval( $applicant / 32 );
+                        if ( $full_page_count > 0 ) {
+                            $rem = intval( $applicant % 32 );
+                            if ( $rem == 24 ) {
+                                $blanktd = 0;
+                            } elseif ( $rem > 24 ) {
+                                $blanktd = 32 - ( $rem % $blanktd );
+                            } else {
+                                $blanktd -= $rem % $blanktd;    
+                            }
                             $blanktd -= $rem % $blanktd;
-                        } else{
-                            $blanktd += 42 - $applicants;
+                        } else {
+                            $blanktd += 32 - $applicant;
                         }
-                    } else{
-                        $blanktd -= $applicants;
+                    } else {
+                        $blanktd -= $applicant;
                     }
 
                     while ( $blanktd > 0)
                     {
                         echo 
                         '<tr>
+                            <td align="left" valign="top" class="border" style="padding: 5px;"></td>
                             <td align="left" valign="top" class="border" style="padding: 5px;">&nbsp;</td>
                             <td align="left" valign="top" class="border" style="padding: 5px;">&nbsp;</td>
                             <td align="left" valign="top" class="border" style="padding: 5px;">&nbsp;</td>
                             <td align="left" valign="top" class="border" style="padding: 5px;">&nbsp;</td>
                             <td align="left" valign="top" class="border" style="padding: 5px;">&nbsp;</td>
-                            <td align="left" valign="top" class="border" style="padding: 5px;">&nbsp;</td>
-                            <td align="left" valign="top" class="border" style="padding: 5px;">&nbsp;</td>
+                            <td align="left" valign="top" class="border" style="padding: 5px;"></td>
                         </tr>';
 
                         $blanktd--;

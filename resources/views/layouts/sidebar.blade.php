@@ -35,13 +35,18 @@
                         <a href="{{ url('/applicants/lineup') }}"><i class="fa fa-circle-o"></i> Lineup of Applicants</a>
                     </li>
                     <li class="{{ Request::is( 'applicants/forms') ? 'active' : '' }} {{ Request::is( 'applicants/forms/*') ? 'active' : '' }}">
-                        <a href="{{ url('/applicants/forms') }}"><i class="fa fa-circle-o"></i> Forms</a>
+                        <a href="#"><i class="fa fa-circle-o"></i> Forms</a>
                     </li>
                 </ul>
             </li>
             <li class="{{ Request::is( 'positions') ? 'active' : '' }} {{ Request::is( 'positions/*') ? 'active' : '' }}">
                 <a  href="{{ url('/positions') }}">
                     <i class="fa fa-thumb-tack"></i> <span>Office Positions</span>
+                </a>
+            </li>
+            <li class="{{ Request::is( 'users') ? 'active' : '' }} {{ Request::is( 'users/*') ? 'active' : '' }}">
+                <a  href="{{ url('/users') }}">
+                    <i class="fa fa-user"></i> <span>Users</span>
                 </a>
             </li>
         </ul>

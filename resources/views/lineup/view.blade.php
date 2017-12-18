@@ -35,9 +35,8 @@
         <div class="col-xs-12 col-md-4">
             <div class="box box-primary">
                 <div class="box-header with-border">
-                    <h3 class="box-title"><b></b></h3>
+                    <h3 class="box-title"><b>Position Details</b></h3>
                     <div class="box-tools pull-right">
-                        <button type="button" id="btn-print-list" class="btn btn-danger btn-sm" data-toggle="modal" value='{{ url("applicants/lineup/print/{$selection->id}") }}'><i class="fa fa-print fa-fw"></i> Print</button>
                         <button type="button" id="" class="btn btn-primary btn-sm" data-toggle="modal"><i class="fa fa-pencil fa-fw"></i> Update</button>
                     </div>
                 </div>
@@ -155,72 +154,89 @@
         </div>
 
         <div class="col-xs-12 col-md-8">
-            <div class="box box-primary">
-                <div class="box-header">
-                    <h3 class="box-title"><b>Selection Lineup of Applicants</b></h3>
-                </div>
-                <div class="box-body">
-
-                    @if(session('info'))
-                         <div class="alert alert-success alert-dismissible hide-alert-panel">
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
-                            {{ session('info') }}
+            <div class="row">
+                <div class="col-xs-12 col-md-12">
+                    <div class="box box-primary">
+                        <div class="box-body">
+                            <div class="box-tools pull-right">
+                                <button type="button" id="btn-print-list" class="btn btn-warning btn-sm" data-toggle="modal" value='{{ url("applicants/lineup/print/{$selection->id}") }}'><i class="fa fa-print fa-fw"></i> Print Selection Lineup Form</button>
+                                <button type="button" id="btn-print-criteria" class="btn btn-primary btn-sm" data-toggle="modal" value='{{ url("applicants/lineup/print/evaluation-criteria/{$selection->id}") }}'><i class="fa fa-print fa-fw"></i> Print Evaluation Criteria Form</button>
+                                <button type="button" id="btn-print-list" class="btn btn-success btn-sm" data-toggle="modal" value='{{ url("applicants/lineup/print/{$selection->id}") }}'><i class="fa fa-print fa-fw"></i> Print Consolidated Rater's Assessment Form</button>
+                            </div>
                         </div>
-                    @endif
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-md-12">
+                    <div class="box box-primary">
+                        <div class="box-header">
+                            <h3 class="box-title"><b>Selection Lineup of Applicants</b></h3>
+                        </div>
+                        <div class="box-body">
 
-                    <div class="row">
-                        <div class="col-md-12">
-                            <table id="table-lineup-selection" class="table table-bordered table-striped table-responsive table-hover dataTable">
-                                <thead>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Education</th>
-                                        <th>Relevant Trainings</th>
-                                        <th>Work Experience</th>
-                                        <th>Eligibility</th>
-                                        <th>Performance Rating</th>
-                                        <th class="no-sort action"></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach($group as $selection)
-                                        <tr>
-                                            <td>
-                                                <a href='{{ url("/applicants/edit/{$selection->applicant->id}") }}' class="font-underline">{{ $selection->applicant['lastname'] . ', ' . $selection->applicant['firstname'] }} {{ !empty($selection->applicant['middlename']) ? $selection->applicant['middlename'][0].'.' : '' }}</a>
-                                                <input type="hidden" name="applicant_id[]" value="{{ $selection->applicant['id'] }}">
-                                            </td>
-                                            <td>
-                                                @foreach($selection->applicant->educations as $educations)
-                                                    {{ $educations['program'] }}
-                                                    <br><small>{{ $educations['school'] }} - {{ $educations['year'] }}</small><br>
-                                                @endforeach
-                                            </td>
-                                            <td>
-                                                @foreach($selection->applicant->trainings as $training)
-                                                    {{ $training['title'] }}
-                                                    <br><small>{{ $training['conducted_by'] }}</small><br>
-                                                @endforeach
-                                            </td>
-                                            <td>
-                                                @foreach($selection->applicant->experiences as $experience)
-                                                    {{ $experience['position'] }}
-                                                    <br><small>{{ $experience['agency'] }} - {{ date("Y", strtotime($experience['to_date'])) }}</small><br>
-                                                @endforeach
-                                            </td>
-                                            <td>
-                                                @foreach($selection->applicant->eligibilities as $eligibility)
-                                                    {{ $eligibility['title'] }};<br>
-                                                @endforeach
-                                            </td>
-                                            <td class="text-left">
-                                            </td>
-                                            <td class="text-center">
-                                                <a href="javascript:void(0);" class="btn btn-remove-app btn-danger btn-xs"><i class="fa fa-trash"></i></a>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
+                            @if(session('info'))
+                                 <div class="alert alert-success alert-dismissible hide-alert-panel">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                    {{ session('info') }}
+                                </div>
+                            @endif
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <table id="table-lineup-selection" class="table table-bordered table-striped table-responsive table-hover dataTable">
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Education</th>
+                                                <th>Relevant Trainings</th>
+                                                <th>Work Experience</th>
+                                                <th>Eligibility</th>
+                                                <th>Performance Rating</th>
+                                                <th class="no-sort action"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach($group as $selection)
+                                                <tr>
+                                                    <td>
+                                                        <a href='{{ url("/applicants/edit/{$selection->applicant->id}") }}' class="font-underline">{{ $selection->applicant['lastname'] . ', ' . $selection->applicant['firstname'] }} {{ !empty($selection->applicant['middlename']) ? $selection->applicant['middlename'][0].'.' : '' }}</a>
+                                                        <input type="hidden" name="applicant_id[]" value="{{ $selection->applicant['id'] }}">
+                                                    </td>
+                                                    <td>
+                                                        @foreach($selection->applicant->educations as $educations)
+                                                            {{ $educations['program'] }}
+                                                            <br><small>{{ $educations['school'] }} - {{ $educations['year'] }}</small><br>
+                                                        @endforeach
+                                                    </td>
+                                                    <td>
+                                                        @foreach($selection->applicant->trainings as $training)
+                                                            {{ $training['title'] }}
+                                                            <br><small>{{ $training['conducted_by'] }}</small><br>
+                                                        @endforeach
+                                                    </td>
+                                                    <td>
+                                                        @foreach($selection->applicant->experiences as $experience)
+                                                            {{ $experience['position'] }}
+                                                            <br><small>{{ $experience['agency'] }} - {{ date("Y", strtotime($experience['to_date'])) }}</small><br>
+                                                        @endforeach
+                                                    </td>
+                                                    <td>
+                                                        @foreach($selection->applicant->eligibilities as $eligibility)
+                                                            {{ $eligibility['title'] }};<br>
+                                                        @endforeach
+                                                    </td>
+                                                    <td class="text-left">
+                                                    </td>
+                                                    <td class="text-center">
+                                                        <a href="javascript:void(0);" class="btn btn-remove-app btn-danger btn-xs"><i class="fa fa-trash"></i></a>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
