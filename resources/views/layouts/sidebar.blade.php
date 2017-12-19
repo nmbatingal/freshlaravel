@@ -34,9 +34,9 @@
                     <li class="{{ Request::is( 'applicants/lineup') ? 'active' : '' }} {{ Request::is( 'applicants/lineup/*') ? 'active' : '' }}">
                         <a href="{{ url('/applicants/lineup') }}"><i class="fa fa-circle-o"></i> Lineup of Applicants</a>
                     </li>
-                    <li class="{{ Request::is( 'applicants/forms') ? 'active' : '' }} {{ Request::is( 'applicants/forms/*') ? 'active' : '' }}">
+                    <!-- <li class="{{ Request::is( 'applicants/forms') ? 'active' : '' }} {{ Request::is( 'applicants/forms/*') ? 'active' : '' }}">
                         <a href="#"><i class="fa fa-circle-o"></i> Forms</a>
-                    </li>
+                    </li> -->
                 </ul>
             </li>
             <li class="{{ Request::is( 'positions') ? 'active' : '' }} {{ Request::is( 'positions/*') ? 'active' : '' }}">

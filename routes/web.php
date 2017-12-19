@@ -35,9 +35,14 @@ Route::get('/applicants/lineup/view/{id}', 'SelectionsController@view')->middlew
 Route::get('/applicants/lineup/print/{id}', 'SelectionsController@print')->middleware('auth')->name('lineup.print');
 //Route::get('/applicants/lineup/print/evaluation-criteria/{id}', 'SelectionsController@printEvalCriteria')->middleware('auth')->name('lineup.print-eval-criteria-form');
 Route::get('/applicants/lineup/print/evaluation-criteria/{id}', 'SelectionsController@printCriteria')->middleware('auth')->name('lineup.print-eval-criteria-form');
+Route::get('/applicants/lineup/print/consolidated/{id}', 'SelectionsController@printConsolidated')->middleware('auth')->name('lineup.print-consolidated-form');
 /*** END LINEUP APPLICANTS CONTROLLER ***/
 
 /*** POSITION CONTROLLER ***/
 Route::get('/positions', 'PositionsController@index')->middleware('auth')->name('positions');
 Route::post('/positions/create', 'PositionsController@create')->name('positions.create');
 /*** END POSITION CONTROLLER ***/
+
+/*** USER CONTROLLER ***/
+Route::get('/users', 'UsersController@index')->middleware('auth')->name('users');
+/*** END USER CONTROLLER ***/

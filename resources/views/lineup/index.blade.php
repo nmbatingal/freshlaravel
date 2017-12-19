@@ -18,7 +18,7 @@
 <!-- BREADCRUMB -->
 @section('breadcrumb')
     <li><a href="{{ url('/') }}"><i class="fa fa-home"></i> Home</a></li>
-    <li><a href="#">Applicants</a></li>
+    <li><a href="{{ url('/applicants/list') }}">Applicants</a></li>
     <li class="active">Lineup of Applicants</li>
 @endsection
 

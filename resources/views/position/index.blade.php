@@ -42,8 +42,8 @@
                 </div>
                 <div class="box-body">
                 </div>
-                <div class="box-footer no-padding bg-gray">
-                    <div id="list-positions">
+                <div class="box-footer no-padding">
+                    <div id="list-positions" style="max-height: 500px;">
                         <ul class="nav nav-stacked">
                             @if( count($positions) > 0)
                                 @foreach($positions as $position)
@@ -203,7 +203,7 @@
         $('#list-positions').slimScroll({
             color: '#8f8f8f',
             size: '10px',
-            height: '500px',
+            height: '',
             alwaysVisible: false
         });
 

@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Applicant extends Model
 {
     protected $table = 'applicants';
+    protected $fillable = [
+        'lastname', 'firstname', 'middlename', 'contact', 'remarks', 'status',
+    ];
 
     /*** RELATIONS ***/
     public function educations()

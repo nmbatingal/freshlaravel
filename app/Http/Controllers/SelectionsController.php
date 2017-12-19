@@ -30,6 +30,10 @@ class SelectionsController extends Controller
             $grouping->applicant_id = $applicant;
             $grouping->selectionGroup()->associate($lineup);
             $grouping->save();
+
+            $task = Applicant::findOrFail($applicant);
+            $task->update(['status' => 1]);
+
         }
 
         return redirect('/applicants/lineup')->with('info', 'Line-up Saved Successfully!');
@@ -54,6 +58,13 @@ class SelectionsController extends Controller
         $group     = Group::where('group_id', $id)->get();
 
         return view('lineup.print-eval-criteria', compact('selection', 'group'));
+    }
+
+    public function printConsolidated($id) {
+        $selection = Selection::find($id);
+        $group     = Group::where('group_id', $id)->get();
+
+        return view('lineup.print-consolidated', compact('selection', 'group'));
     }
 
     public function destroy($id) {

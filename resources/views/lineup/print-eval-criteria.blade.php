@@ -143,8 +143,7 @@
                     <td align="left">
                         {{ $selection->applicant['lastname'] . ', ' . $selection->applicant['firstname'] }} {{ !empty($selection->applicant['middlename']) ? $selection->applicant['middlename'] : '' }}
                     </td>
-                    <td height="26" align="center">
-                    </td>
+                    <td align="center"></td>
                     <td align="center"></td>
                     <td align="center"></td>
                     <td align="center"></td>
@@ -174,8 +173,8 @@
             ?>
                 @for( $i = $blanktd; $i > 0 ; $i-- )
                     <tr valign="middle">
-                        <td align="left"></td>
-                        <td height="26" align="center"></td>
+                        <td align="left">&nbsp;</td>
+                        <td align="center"></td>
                         <td align="center"></td>
                         <td align="center"></td>
                         <td align="center"></td>

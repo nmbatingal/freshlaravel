@@ -269,12 +269,12 @@
                     {
                         echo 
                         '<tr>
+                            <td align="left" valign="top" class="border" style="padding: 5px;">&nbsp;</td>
                             <td align="left" valign="top" class="border" style="padding: 5px;"></td>
-                            <td align="left" valign="top" class="border" style="padding: 5px;">&nbsp;</td>
-                            <td align="left" valign="top" class="border" style="padding: 5px;">&nbsp;</td>
-                            <td align="left" valign="top" class="border" style="padding: 5px;">&nbsp;</td>
-                            <td align="left" valign="top" class="border" style="padding: 5px;">&nbsp;</td>
-                            <td align="left" valign="top" class="border" style="padding: 5px;">&nbsp;</td>
+                            <td align="left" valign="top" class="border" style="padding: 5px;"></td>
+                            <td align="left" valign="top" class="border" style="padding: 5px;"></td>
+                            <td align="left" valign="top" class="border" style="padding: 5px;"></td>
+                            <td align="left" valign="top" class="border" style="padding: 5px;"></td>
                             <td align="left" valign="top" class="border" style="padding: 5px;"></td>
                         </tr>';
 

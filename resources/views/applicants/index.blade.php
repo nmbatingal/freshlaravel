@@ -104,7 +104,9 @@
                                                 <td class="text-center">
                                                     @if($applicant['status'] == 0)
                                                         <span class="label bg-red">not yet interviewed</span>
-                                                    @else
+                                                    @elseif($applicant['status'] == 1)
+                                                        <span class="label bg-orange">for interview</span>
+                                                    @elseif($applicant['status'] == 2)
                                                         <span class="label bg-green">interviewed</span>
                                                     @endif
                                                 </td>

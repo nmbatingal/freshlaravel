@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Applicant as Applicant;
+use App\User as User;
+use App\PosPosition as Position;
 
 class HomeController extends Controller
 {
@@ -23,6 +26,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $applicants     = Applicant::all();
+        $users          = User::all();
+        $positions      = Position::all();
+        return view('home', compact('applicants', 'users', 'positions'));
     }
 }

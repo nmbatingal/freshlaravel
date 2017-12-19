@@ -161,7 +161,7 @@
                             <div class="box-tools pull-right">
                                 <button type="button" id="btn-print-list" class="btn btn-warning btn-sm" data-toggle="modal" value='{{ url("applicants/lineup/print/{$selection->id}") }}'><i class="fa fa-print fa-fw"></i> Print Selection Lineup Form</button>
                                 <button type="button" id="btn-print-criteria" class="btn btn-primary btn-sm" data-toggle="modal" value='{{ url("applicants/lineup/print/evaluation-criteria/{$selection->id}") }}'><i class="fa fa-print fa-fw"></i> Print Evaluation Criteria Form</button>
-                                <button type="button" id="btn-print-list" class="btn btn-success btn-sm" data-toggle="modal" value='{{ url("applicants/lineup/print/{$selection->id}") }}'><i class="fa fa-print fa-fw"></i> Print Consolidated Rater's Assessment Form</button>
+                                <button type="button" id="btn-print-consolidate" class="btn btn-success btn-sm" data-toggle="modal" value='{{ url("applicants/lineup/print/consolidated/{$selection->id}") }}'><i class="fa fa-print fa-fw"></i> Print Consolidated Rater's Assessment Form</button>
                             </div>
                         </div>
                     </div>
@@ -255,6 +255,18 @@
     <script src="{{ asset('js/jquery-lineup.js') }}" type="text/javascript"></script>
     <script>
         $('#btn-print-list').click(function () {
+            var $href  = $(this).attr('value');
+            var target = window.open( $href, 'Print','directories=no,titlebar=no,toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=1366,height=800');
+            target.print();
+        });
+        
+        $('#btn-print-criteria').click(function () {
+            var $href  = $(this).attr('value');
+            var target = window.open( $href, 'Print','directories=no,titlebar=no,toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=1366,height=800');
+            target.print();
+        });
+
+        $('#btn-print-consolidate').click(function () {
             var $href  = $(this).attr('value');
             var target = window.open( $href, 'Print','directories=no,titlebar=no,toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=1366,height=800');
             target.print();
