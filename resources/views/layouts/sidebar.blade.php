@@ -45,8 +45,8 @@
                 </a>
             </li>
             <li class="{{ Request::is( 'users') ? 'active' : '' }} {{ Request::is( 'users/*') ? 'active' : '' }}">
-                <a  href="{{ url('/users') }}">
-                    <i class="fa fa-user"></i> <span>Users</span>
+                <a id="button-action" href="{{ url('/users') }}">
+                    <i class="fa fa-user"></i> <span>User Accounts</span>
                 </a>
             </li>
         </ul>

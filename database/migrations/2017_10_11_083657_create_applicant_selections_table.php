@@ -18,8 +18,8 @@ class CreateApplicantSelectionsTable extends Migration
         Schema::create('app_selections', function (Blueprint $table) {
             $table->increments('id');
             $table->date('date_interview')->nullable();
-            $table->integer('pos_id')->unsigned();
-            $table->foreign('pos_id')->references('id')->on('pos_positions')->onDelete('cascade');
+            $table->integer('position_id')->unsigned();
+            $table->foreign('position_id')->references('id')->on('pos_positions')->onDelete('cascade');
             $table->integer('status')->default(0);
             $table->timestamps();
         });

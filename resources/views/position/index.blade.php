@@ -49,8 +49,8 @@
                                 @foreach($positions as $position)
                                     <li>
                                         <a data-id="{{ $position['id'] }}" href="#">
-                                            <b>{{ $position['title'] }}</b> <small>{{ $position['acronym'] }} - SG {{ $position['sal_grade'] }}</small>
-                                            <span class="pull-right label bg-orange">{{ date("M-d-Y", strtotime($position['created_at'])) }}</span>
+                                            <b>{{ $position['title'] }}</b> <small>{{ $position['acronym'] }}</small> <span class="pull-right label bg-orange">SG {{ $position['sal_grade'] }}</span><br>
+                                            <small>Date Posted: <span class="text-orange">{{ date("M-d-Y", strtotime($position['created_at'])) }}</span></small>
                                         </a>
                                     </li>
                                 @endforeach

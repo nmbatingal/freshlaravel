@@ -74,6 +74,5 @@
     <script src="{{ asset('assets/sweetalert2/dist/sweetalert2.all.min.js')}}"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="{{ asset('js/demo.js') }}"></script>
-
 </body>
 </html>

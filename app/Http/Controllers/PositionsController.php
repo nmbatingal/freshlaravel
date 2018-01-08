@@ -33,6 +33,7 @@ class PositionsController extends Controller
         if ( !empty($publications) ) {
             $publication   = new Publication();
             $publication->publication_no = $publications;
+            $publication->timestamps = false;
             $publication->position()->associate($position);
             $publication->save();
         }
@@ -41,6 +42,7 @@ class PositionsController extends Controller
         if ( !empty($items) ) {
             $item   = new Item();
             $item->item_no = $items;
+            $item->timestamps = false;
             $item->position()->associate($position);
             $item->save();
         }
@@ -49,6 +51,7 @@ class PositionsController extends Controller
         $qualification->experience    = $request['experience'];
         $qualification->trainings     = $request['trainings'];
         $qualification->eligibilities = $request['eligibilities'];
+        $qualification->timestamps = false;
         $qualification->position()->associate($position);
         $qualification->save();
 
