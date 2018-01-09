@@ -14,7 +14,7 @@ Login -
             <div class="form-group {{ $errors->has('username') ? 'has-error' : '' }}">
                 <div class="input-group">
                     <span class="input-group-addon">
-                        <i class="fa fa-user"></i>
+                        <i class="fa fa-user fa-fw"></i>
                     </span>
                     <div class="form-line">
                         <input id="username" type="text" class="form-control" name="username" value="{{ old('username') }}" placeholder="username" autofocus>
@@ -30,7 +30,7 @@ Login -
             <div class="form-group {{ $errors->has('password') ? ' has-error' : '' }}">
                 <div class="input-group">
                     <span class="input-group-addon">
-                        <i class="fa fa-lock"></i>
+                        <i class="fa fa-lock fa-fw"></i>
                     </span>
                     <div class="form-line">
                         <input id="password" type="password" class="form-control form-control-danger" name="password" placeholder="password" >

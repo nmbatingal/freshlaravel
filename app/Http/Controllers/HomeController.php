@@ -30,5 +30,7 @@ class HomeController extends Controller
         $users          = User::all();
         $positions      = Position::all();
         return view('home', compact('applicants', 'users', 'positions'));
+
+        //return response(view('home', compact('applicants', 'users', 'positions')), 200, ['Content-Type' => 'application/json']);
     }
 }

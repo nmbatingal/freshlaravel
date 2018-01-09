@@ -15,9 +15,9 @@
 @section('content')
 <section class="content">
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8">
             <div class="row">
-                <div class="col-xs-12 col-sm-6 col-md-3">
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
                     <div class="small-box bg-aqua">
                         <div class="inner">
                           <h3>{{ $applicants->count() }}</h3>
@@ -42,7 +42,7 @@
                     </div>
                 </div>
 
-                <div class="col-xs-12 col-sm-6 col-md-3">
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
                     <div class="small-box bg-green">
                         <div class="inner">
                           <h3>&nbsp;</h3>
@@ -67,7 +67,7 @@
                     </div>
                 </div>
 
-                <div class="col-xs-12 col-sm-6 col-md-3">
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
                     <div class="small-box bg-maroon">
                         <div class="inner">
                           <h3>{{ $positions->count() }}</h3>
@@ -84,7 +84,7 @@
                         </div>
                         <div class="box-body no-padding">
                             <ul class="nav nav-stacked">
-                                <li><a href="#">No. of Positions Hiring <span class="pull-right badge bg-blue">{{ $applicants->count() }}</span></a></li>
+                                <li><a href="#">No. of Positions Hiring <span class="pull-right badge bg-blue">{{ $positions->count() }}</span></a></li>
                                 <li><a href="#">&nbsp; <span class="pull-right badge bg-red"></span></a></li>
                                 <li><a href="#">&nbsp; <span class="pull-right badge bg-aqua"></span></a></li>
                             </ul>
@@ -92,7 +92,7 @@
                     </div>
                 </div>
 
-                <div class="col-xs-12 col-sm-6 col-md-3">
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
                     <div class="small-box bg-orange">
                         <div class="inner">
                           <h3>{{ $users->count() }}</h3>
@@ -118,7 +118,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-4">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="box box-danger">

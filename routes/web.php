@@ -44,5 +44,5 @@ Route::post('/positions/create', 'PositionsController@create')->name('positions.
 /*** END POSITION CONTROLLER ***/
 
 /*** USER CONTROLLER ***/
-Route::get('/users', 'UsersController@index')->middleware('auth')->name('users');
+Route::name('users')->get('/users', 'UsersController@index')->middleware('auth');
 /*** END USER CONTROLLER ***/
